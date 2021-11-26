@@ -21,11 +21,3 @@ docker run --rm -it --env NGINX_AUTO_INDEX="off" -p8080:80 -p443:443 ft_server:l
 ```
 docker rmi ft_server
 ```
-
-- 
-```
-docker exec -it `docker ps | grep ft_server | awk '{print $1}'` bash
-```
-
-
-
