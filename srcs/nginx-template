@@ -1,0 +1,32 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    ssl on;
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+    ssl_certificate     common.crt;
+    ssl_certificate_key common.key;
+
+	root /var/www/html;
+	index index.php index.html index.htm index.nginx-debian.html;
+
+	server_name "ft_server";
+
+	location / {
+		try_files $uri $uri/ =404;
+		autoindex %AUTO_INDEX%;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/%PHP_FPM%.sock;
+	}
+
+	location ~ /\.ht {
+		deny all;
+	}
+}
