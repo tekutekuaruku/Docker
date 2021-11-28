@@ -1,5 +1,11 @@
 ## Description
-Wordpressの環境構築用Docker
+ブログ作りの環境構築用Docker
+
+- OS debian:buster
+- サーバー nginx
+- DB 　mysql
+- ブログソフトウェア wordpress
+- MySQL管理ツール phpmyadmin
 
 
 ## Usage
